@@ -1,4 +1,4 @@
-import InformadorDePrecios from "../src/casoDeUso/InformadorDePrecios.js";
+import InformadorDePrecios from "../src/casoDeUso/InformarPrecios.js";
 
 const informador = new InformadorDePrecios();
 

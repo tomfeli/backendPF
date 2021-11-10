@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 
 export default class MailSender{
   constructor() {
-    this.nodemailer=nodemailer.createTransport(
+    this.transporter=nodemailer.createTransport(
       {
       host: "smtp-mail.outlook.com",
       port: 587,
