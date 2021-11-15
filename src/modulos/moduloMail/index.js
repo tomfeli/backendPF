@@ -1,7 +1,7 @@
-import MailSender from "./mailSender";
-import { configMail } from "../../config/config";
-const em= new MailSender(configMail);
+import MailSender from "./mailSender.js";
+import { configMail } from "../../config/config.js";
+const em= new MailSender(configMail());
 
-export default function getEnviadorMails(){
+export function getEnviadorMails(){
     return em;
 }

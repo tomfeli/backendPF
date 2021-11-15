@@ -7,35 +7,33 @@ export default class MailSender{
       config
     )
   }
-  async sendFile(to,subject,text,file){
+  async sendFile(to,subject,text,filename,filepath){
     let info = await this.transporter.sendMail({
-      from: 'tomucho99@hotmail.com', // sender address
-      to:to, // list of receivers
-      subject: subject, // Subject line
-      text: text, // plain text body
-//      html: "<b>Hello world?</b>", // html body
+      from: 'tomucho99@hotmail.com', 
+      to:to, 
+      subject: subject, 
+      text: text, 
       attachments:[
         {
-          filename:file["filename"],
-          path:file["path"]
+          filename:filename,
+          path:filepath
         }
       ]
     });
-    console.log("Message sent: %s", info.messageId);
+    console.log("Mail enviado con exito a: %s", to);
   }
 
   async send(to,subject,text){
 
 
     let info = await this.transporter.sendMail({
-      from: 'tomucho99@hotmail.com', // sender address
-      to:to, // list of receivers
-      subject: subject, // Subject line
-      text: text, // plain text body
-//      html: "<b>Hello world?</b>", // html body
+      from: 'tomucho99@hotmail.com', 
+      to:to, 
+      subject: subject, 
+      text: text, 
     });
 
-    console.log("Message sent: %s", info.messageId);
+    console.log("Mail enviado con exito a: %s", to);
   }
 }
 

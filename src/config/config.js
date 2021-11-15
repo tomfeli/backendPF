@@ -1,4 +1,4 @@
-export default function configMail(){
+export  function configMail(){
     return(
         {
             host: "smtp-mail.outlook.com",
@@ -16,6 +16,6 @@ export default function configMail(){
     )
 }
 
-export default function configArchivo(){
+export  function configArchivo(){
 
 }

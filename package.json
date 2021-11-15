@@ -5,6 +5,7 @@
     "description": "",
     "main": "./src/main.js",
     "scripts": {
+        "testInformadorDeCotizacion":"node ./test/testCasoDeUsoTom.js",
         "testMailSender": "node ./test/testMailSender.js",
         "testDivisas": "node ./test/testDivisas.js"
     },
@@ -12,13 +13,14 @@
     "author": "grupo 14",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.24.0",
+        "babel": "^6.23.0",
         "esm": "^3.2.25",
         "html-pdf": "^3.0.1",
-        "nodemon": "^2.0.14",
-        "axios": "^0.24.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.0.12",
         "nodemailer": "^6.7.0",
-        "babel": "^6.23.0",
-        "jsonwebtoken": "^8.5.1"
+        "nodemon": "^2.0.14"
     },
     "devDependencies": {
         "@types/html-pdf": "^2.2.1"

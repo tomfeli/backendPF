@@ -7,6 +7,15 @@ function prepararPedido() {
         <html>
         ${pedido.telefono}
         </html>`;
+        },
+        generarPlanillaDato: (dato) => {
+
+            return `
+        <!DOCTYPE HTML>
+        <html>
+        
+        ${dato.pdf}
+        </html>`;
         }
     }
 

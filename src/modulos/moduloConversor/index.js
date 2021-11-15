@@ -1,7 +1,7 @@
-import Conversor from "./Conversor";
+import Conversor from "./Conversor.js";
 
 const conversor=new Conversor();
 
-export default function getConversor(){
+export function getConversor(){
     return conversor;
 }

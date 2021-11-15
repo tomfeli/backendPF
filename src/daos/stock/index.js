@@ -1,7 +1,7 @@
-import DaoStock from "./DaoStock";
+import DaoStock from "./DaoStock.js";
 
 const daoStock=new DaoStock();
 
-export default function gwtDaoUsuario(){
+export function getDaoStock(){
     return daoStock;
 }
