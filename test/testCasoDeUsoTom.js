@@ -1,7 +1,10 @@
-import InformadorDePrecios from "../src/casoDeUso/InformarPrecios.js";
+import {getInformadorDeCotizacion} from "../src/casoDeUso/index.js";
 
-const informador = new InformadorDePrecios();
+const informador = getInformadorDeCotizacion();
 
 let to= "fiszsontom@gmail.com";
+let ids=[1,2];
+let ids2=[];
 
-informador.informar(to);
+await informador.informarPrecioItems(ids,to);
+await informador.informarPrecioItems(ids2,to).catch(console.error);
