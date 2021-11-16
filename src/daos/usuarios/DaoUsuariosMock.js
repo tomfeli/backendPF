@@ -5,12 +5,26 @@ export default class DaoUsuariosMock{
                 "id":1,
                 "mail":"pepito123@hotmail.com",
                 "pass":"123456",
+                "admin":false
 
             },
             {
                 "id":2,
                 "mail":"juancito456@hotmail.com",
                 "pass":"789123",
+                "admin":false
+            },
+            {
+                "id":3,
+                "mail":"franzoniclara23@gmail.com",
+                "pass":"123456",
+                "admin":true
+            },
+            {
+                "id":4,
+                "mail":"qa.gcba@gmail.com",
+                "pass":"789123",
+                "admin":true
             }
         ]
     }

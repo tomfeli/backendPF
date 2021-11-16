@@ -1,6 +1,6 @@
-import Conversor from './Conversor.js'
+import {getConversor} from '../src/modulos/moduloConversor/index.js'
 
-const cv = new Conversor();
+const cv = getConversor();
 
  cv.getDato('ARS','USD',2).then(r=>{console.log(r)})
 

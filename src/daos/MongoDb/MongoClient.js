@@ -1,14 +1,14 @@
 import {MongoClient} from "mongodb";
-export default class MongoClient{
+export default class Mongo{
     constructor(config){
         this.client= new MongoClient(config.uri);
     }
     async close(){
         try{
-            this.mongoClient.close();
+            await this.client.close();
         }
         catch(error){
-            throw new Error(`NOT_FOUND:${error.message}`);
+            throw Error(`NOT_FOUND:${error}`);
         }
         
     }
@@ -17,7 +17,7 @@ export default class MongoClient{
             await this.client.connect();
         }
         catch(error){
-            throw new Error(`NOT_FOUND:${error.message}`);
+            throw Error(`NOT_FOUND:${error}`);
         }
     }
 }
