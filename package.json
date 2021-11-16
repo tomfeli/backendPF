@@ -7,7 +7,8 @@
     "scripts": {
         "testInformadorDeCotizacion":"node ./test/testCasoDeUsoTom.js",
         "testMailSender": "node ./test/testMailSender.js",
-        "testDivisas": "node ./test/testDivisas.js"
+        "testDivisas": "node ./test/testDivisas.js",
+        "testRegistroUsuario": "node ./test/testCasoDeUsoJhona.js"
     },
     "keywords": [],
     "author": "grupo 14",
