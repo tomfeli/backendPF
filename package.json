@@ -5,7 +5,7 @@
     "description": "",
     "main": "./src/main.js",
     "scripts": {
-        "testInformadorDeCotizacion":"node ./test/testCasoDeUsoTom.js",
+        "testInformadorDeCotizacion": "node ./test/testCasoDeUsoTom.js",
         "testMailSender": "node ./test/testMailSender.js",
         "testDivisas": "node ./test/testDivisas.js"
     },
@@ -16,9 +16,10 @@
         "axios": "^0.24.0",
         "babel": "^6.23.0",
         "esm": "^3.2.25",
+        "express": "^4.17.1",
         "html-pdf": "^3.0.1",
         "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.0.12",
+        "mongodb": "^4.1.4",
         "nodemailer": "^6.7.0",
         "nodemon": "^2.0.14"
     },

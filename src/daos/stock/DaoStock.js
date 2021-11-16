@@ -28,7 +28,7 @@ export default class DaoStock{
             return resultado;
         }
         else{
-            throw new Error("No se encontraron items con el id solicitado")
+            throw new Error("INVALID_ARGS:No se encontraron items con el id solicitado")
         }
         
     }

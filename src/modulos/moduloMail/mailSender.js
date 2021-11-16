@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-
+import {PATH_FOR_REPORTS} from "../../config/config.js"
 
 export default class MailSender{
   constructor(config) {
@@ -7,7 +7,7 @@ export default class MailSender{
       config
     )
   }
-  async sendFile(to,subject,text,filename,filepath){
+  async sendFile(to,subject,text,filename){
     let info = await this.transporter.sendMail({
       from: 'tomucho99@hotmail.com', 
       to:to, 
@@ -16,7 +16,7 @@ export default class MailSender{
       attachments:[
         {
           filename:filename,
-          path:filepath
+          path:`${PATH_FOR_REPORTS}/${filename}`
         }
       ]
     });

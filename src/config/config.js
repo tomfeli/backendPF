@@ -15,7 +15,8 @@ export  function configMail(){
         }
     )
 }
-
-export  function configArchivo(){
-
+export const PORT=8080;
+export const CONFIG_MONGO={
+    uri:"mongodb://localhost:27017",
 }
+export const PATH_FOR_REPORTS='/home/tom/TP2/tp2/reports';

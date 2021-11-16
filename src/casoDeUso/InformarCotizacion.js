@@ -12,40 +12,24 @@ export default class InformarCotizacion{
         this.generadorIdsParaItems=getGeneradorDeIds();
     }
     async informarPrecioItems(idItems,to){
-        let items;
-        let formatedItems
-        try{
             //traer datos de stock
-            items= await this.DaoStock.getItemsById(idItems);
+        let items= await this.DaoStock.getItemsById(idItems);
             //traer precios convertidos del stock
-            formatedItems=await Promise.all(items.map(async (item)=>await this.formatDataWithPrices(item)));
-            
-        }
-        catch(error){
-            formatedItems=[
-                new Item(this.generadorIdsParaItems.generar(),
-                    error
-                )
-            ]
-        }
-        finally{ 
+        let formatedItems=await Promise.all(items.map(async (item)=>await this.formatDataWithPrices(item))); 
             //formatear info para archivo 
-            let dataForArchive={
-                name:`reporte${to}_${new Date().toString()}`,
-                pdf:this.formatDataForFile(formatedItems)
-            }
-            //armar archivo
-            await createPdfGenerator().generarDivisa(dataForArchive);
-            //enviar mail
-            await this.ms.sendFile(
-                to,
-                "pedido de cotizacion",
-                "A continuacion se adjunta la cotizacion solicitada",
-                `${dataForArchive.name}.pdf`,
-                `/home/tom/TP2/tp2/reports/${dataForArchive.name}.pdf`
-                );
+        let dataForArchive={
+            name:`reporte${to}_${new Date().toString()}`,
+            pdf:this.formatDataForFile(formatedItems)
         }
-
+            //armar archivo
+        await createPdfGenerator().generarDivisa(dataForArchive);
+            //enviar mail
+        await this.ms.sendFile(
+            to,
+            "pedido de cotizacion",
+            "A continuacion se adjunta la cotizacion solicitada",
+            `${dataForArchive.name}.pdf`
+        );
     }
     async formatDataWithPrices(item){
         let USD=await this.conversor.getDato("ARS","USD",item.price);

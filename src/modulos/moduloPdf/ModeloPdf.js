@@ -1,7 +1,7 @@
 //modulo Luciano Andres
 import pdf from "html-pdf";
 import prepararPedido from "./Plantilla.js";
-
+import {PATH_FOR_REPORTS} from "../../config/config.js";
 
 
 export function createPdfGenerator() {
@@ -28,12 +28,12 @@ export function createPdfGenerator() {
                 pdf.create(prepararPedido().generarPlanillaDato(dato))
                     .toFile(
                         //cambiar la ruta segun corresponda
-                        `/home/tom/TP2/tp2/reports/${dato.name}.pdf`,
+                        `${PATH_FOR_REPORTS}/${dato.name}.pdf`,
                         function(err) {
                             if (err) {
                                 reject(err)
                             } else {
-                                resolve(`/home/tom/TP2/tp2/reports/${dato.name}.pdf`);
+                                resolve(`${PATH_FOR_REPORTS}/${dato.name}.pdf`);
                             }
                         }
                     );

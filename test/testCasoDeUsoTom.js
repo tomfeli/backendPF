@@ -7,4 +7,6 @@ let ids=[1,2];
 let ids2=[];
 
 await informador.informarPrecioItems(ids,to);
-await informador.informarPrecioItems(ids2,to).catch(console.error);
+await informador.informarPrecioItems(ids2,to).catch((error)=>{
+    console.log(error.message)
+});
