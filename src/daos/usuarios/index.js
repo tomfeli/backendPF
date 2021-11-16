@@ -1,7 +1,7 @@
-import DaoUsuariosMock from "./DaoUsuariosMock";
+import DaoUsuariosMock from "./DaoUsuariosMock.js";
 
 const dao =new DaoUsuariosMock();
 
-export default function getUsuarios(){
+export function getDaoUsuarios(){
     return dao;
 }
