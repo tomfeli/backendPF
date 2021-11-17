@@ -5,12 +5,14 @@ export default class DaoStock{
             {
                 "id":1,
                 "name":"crema1",
+                "cant":21,
                 "price":1000,
 
             },
             {
                 "id":2,
                 "name":"crema2",
+                "cant":23,
                 "price":1500,
             }
         ]
