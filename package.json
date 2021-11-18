@@ -3,7 +3,7 @@
     "type": "module",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/main.js",
+    "main": "./src/server.js",
     "scripts": {
         "testInformadorDeCotizacion": "node ./test/testCasoDeUsoTom.js",
         "testMailSender": "node ./test/testMailSender.js",

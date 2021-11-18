@@ -3,43 +3,44 @@ export default class DaoUsuariosMock{
         this.usuarios=[
             {
                 "id":1,
-                "mail":"pepito123@hotmail.com",
-                "pass":"123456",
-                "admin":false
-
+                "nombre":"Pepe",
+                "mail":"ajhonatan@gmail.com",
+                "telefono":555555,
+                "password":"123456"
             },
             {
                 "id":2,
+                "nombre":"Juan",
                 "mail":"juancito456@hotmail.com",
-                "pass":"789123",
-                "admin":false
+                "telefono":111111,
+                "pass":"789123"
             },
             {
                 "id":3,
+                "nombre":"Franco",
                 "mail":"franzoniclara23@gmail.com",
-                "pass":"123456",
-                "admin":true
+                "telefono":222222,
+                "pass":"123456"
             },
             {
                 "id":4,
+                "nombre":"Kike",
                 "mail":"qa.gcba@gmail.com",
-                "pass":"789123",
-                "admin":true
+                "telefono":3541515,
+                "pass":"789123"
             }
         ]
     }
     async getAll() {
         return this.usuarios;
     }
-    async userExists(email){
-        return this.usuarios.find(user=>user.email===email);
+    async getById(id){
+        return this.usuarios.find(user=>user.id===id);
     }
-    async createUser(user){
-        try{
-            userValid= new Usuario(user.email,user.password);
-        }catch(error){
-            return error
-        }
+    async getByEmail(email){
+        return this.usuarios.find(user=>user.mail===email);
+    }
+    async save(user){
         return this.usuarios.push(user);
     }
 }

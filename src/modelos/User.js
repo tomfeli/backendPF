@@ -1,4 +1,4 @@
-export class User{
+export default class User{
     constructor(id,nombre,mail,telefono,password){
         this.setId(id);
         this.setNombre(nombre);
@@ -36,7 +36,7 @@ export class User{
     }
     setPassword(password){
         if(password.length < 6){
-            throw new Error("Password no valido");
+            throw new Error("INVALID_ARG: Password is not valid");
         }
         this.password = password;
     }
