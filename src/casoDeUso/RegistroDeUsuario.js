@@ -1,7 +1,8 @@
 import jwt from '../modulos/moduleJwt/jwt.js';
 import {getEnviadorMails} from '../modulos/moduloMail/index.js';
 import {getDaoUsuarios} from '../daos/usuarios/index.js';
-
+import { getGeneradorDeIds } from '../modulos/moduloId/index.js';
+import Usuario from '../modelos/User.js';
 /*********************
  *  Autor: Jhonathan Antonio
  * Caso de uso: registro de usuario:
@@ -14,25 +15,28 @@ import {getDaoUsuarios} from '../daos/usuarios/index.js';
  */
 
 export default class RegistroDeUsuario{
-    constructor(){
-        this.jwt = new jwt("secret");
+    constructor(claveSecreta){
+        this.jwt = new jwt(claveSecreta);
+        this.generadorId = new getGeneradorDeIds();
         this.envMail= getEnviadorMails();
         this.daoUsuarios = getDaoUsuarios();
     }
 
-    async ejecutar(usuario){
-        const userDB= await this.daoUsuarios.userExists(usuario.email);
-        if(userDB){
+    async ejecutar({nombre, email, telefono,password}){
+        const id= this.generadorId.generar();
+        const user= await this.daoUsuarios.getByEmail(email);
+        if(user){
             throw new Error("El usuario ya existe");
         }else{
-            try{
-                await this.daoUsuarios.createUser(usuario);
-                const text = `¡Bienvenid@!, tu usuario es: ${usuario.email}. Esperamos que disfrutes la experiencia, saludos.`;
-                await this.envMail.send(usuario.email,"Creacion de usuario",text);
-                return this.jwt.sign(usuario);
-            }catch(error){
-                throw new Error(error);
+            let userValid = new Usuario(id,nombre,email,telefono,password);
+            await this.daoUsuarios.save(userValid);
+            const text = `¡Hola ${nombre}!, tu usuario es: ${email}. Esperamos que disfrutes la experiencia, saludos.`;
+            await this.envMail.send(email,"Creacion de usuario",text);
+            const payload= {
+                email,
+                password
             }
+            return this.jwt.sign(payload);
         }
     }
 }

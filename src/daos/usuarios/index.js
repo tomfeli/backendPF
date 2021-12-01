@@ -1,6 +1,6 @@
 import DaoUsuariosMock from "./DaoUsuariosMock.js";
-
-const dao =new DaoUsuariosMock();
+import {CONFIG_MONGO} from "../../config/config.js"
+const dao =new DaoUsuariosMock(CONFIG_MONGO);
 
 export function getDaoUsuarios(){
     return dao;

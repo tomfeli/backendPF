@@ -1,10 +1,11 @@
-export class User{
-    constructor(id,nombre,mail,telefono,password){
+export default class User{
+    constructor(id,nombre,mail,telefono,password,admin=false){
         this.setId(id);
         this.setNombre(nombre);
         this.setMail(mail);
         this.setTelefono(telefono);
         this.setPassword(password);
+        this.admin=admin;
     }
     setId(id){
         if(!id){

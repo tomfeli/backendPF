@@ -5,7 +5,7 @@ function prepararPedido() {
             return `
         <!DOCTYPE HTML>
         <html>
-        ${pedido.telefono}
+        ${pedido}
         </html>`;
         },
         generarPlanillaDato: (dato) => {

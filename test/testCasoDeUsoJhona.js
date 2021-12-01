@@ -1,29 +1,29 @@
-// import Servidor from '../src/server.js';
-// import axios from 'axios';
-import RegistroDeUsuario from '../src/casoDeUso/RegistroDeUsuario.js';
-// const server = new Servidor()
-const notified = new RegistroDeUsuario()
-// try {
-//     const PORT = await server.conectar()
-//     const URLGET = `http://localhost:${PORT}/api/login`;
-//     const URLVERIFY = `http://localhost:${PORT}/api/admin`;
-    try {
-        const user ={
-            email: "ajhonatan27@gmail.com",
-            password:"123456"
-        }
-        const res = await notified.ejecutar(user);
-        console.log(res);
-        // const token = await axios.post(URLGET,user) 1º Entrega
-        // console.log(token.data)
+/*********************
+ *  Autor: Jhonathan Antonio
+ * Caso de uso: registro de usuario:
+        Se reciben datos personales
+        Se validan los datos
+        Se crea un usuarie
+        Se envía un mail de confirmación
+        Se devuelve le usuarie con su identificador único generado
+ * 
+ */
+        import UsuarioService from "../src/servicios/usuarioServicio.js";
+
+        const usuarioService = new UsuarioService()
+            try {
+                const user ={
+                    nombre: 'Jhonathan',
+                    email: 'ajhonatan27@gmail.com',
+                    telefono: '123456789',
+                    password: '123456'
+                }
+                const resCreacion = await usuarioService.nuevoUsuario(user);
+                console.log(resCreacion);
         
-        // const verify = await axios.post(URLVERIFY,token.data); 1º Entrega
-    } catch (error) {
-        console.log(error)
-    }
-    //  finally {
-    //     await server.desconectar()
-    // }
-// } catch (error) {
-//     console.log('Hubo un error al conectar al servidor',error)
-// }
+                const token = resCreacion.token;
+                const resVerificacion = await usuarioService.verificarUsuario(token);
+                console.log(resVerificacion)
+            } catch (error) {
+                console.log(error)
+            }

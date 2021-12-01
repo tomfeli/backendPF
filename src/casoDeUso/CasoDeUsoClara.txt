@@ -1,0 +1,11 @@
+CU: Como usuario administrador deseo recibir un email cada vez que un producto de mi stock cambie su precio, tambien
+deseo recibir en el mismo email su equivalente en divisa americana y europea.
+
+Desarrollo:
+1) Desde el DaoStock genero una funcion que reemplace el precio base de mi producto
+2) Desde mi archivo de caso de uso genero una funcion que busque el producto a traves de un id, me devuelva un item.
+Genero un nuevo item y llamo a la funcion update donde le paso dicho item y me devuelva el item con el precio modificado
+3) Desde mi archivo de caso de uso genero una funcion que en base a un item y a su precio me consulta los valores
+en divisa americana y europea, dicha funcion retorna una variable con tendra el contenido del email explicando dicha modificacion
+4) Desde mi archivo de caso de uso genero una funcion que envia el email a un usuario administrador
+5) Para desarrollar este CU utilice el moduloConversor y moduloMail

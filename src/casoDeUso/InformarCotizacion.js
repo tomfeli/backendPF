@@ -13,9 +13,12 @@ export default class InformarCotizacion{
     }
     async informarPrecioItems(idItems,to){
             //traer datos de stock
-        let items= await this.DaoStock.getItemsById(idItems);
+        let items=await this.DaoStock.getItemsById(idItems);
             //traer precios convertidos del stock
-        let formatedItems=await Promise.all(items.map(async (item)=>await this.formatDataWithPrices(item))); 
+        let USD=await this.conversor.getDato("ARS","USD",1);
+        let EUR=await this.conversor.getDato("ARS","EUR",1);
+            
+        let formatedItems=items.map((item)=> this.formatDataWithPrices(item,USD,EUR)); 
             //formatear info para archivo 
         let dataForArchive={
             name:`reporte${to}_${new Date().toString()}`,
@@ -31,17 +34,14 @@ export default class InformarCotizacion{
             `${dataForArchive.name}.pdf`
         );
     }
-    async formatDataWithPrices(item){
-        let USD=await this.conversor.getDato("ARS","USD",item.price);
-        let EUR=await this.conversor.getDato("ARS","EUR",item.price);
-        return(
-            new Item(this.generadorIdsParaItems.generar(),
-                item.name,
-                item.price.toString(),
-                USD.result.amount.toString(),
-                EUR.result.amount.toString()
-            )
-        )
+    formatDataWithPrices(item,USD,EUR){
+        return{
+                "id":this.generadorIdsParaItems.generar(),
+                "nombre":item.name,
+                "ARS":item.price.toString(),
+                "USD":(item.price*USD.result.amount).toString(),
+                "EUR":(item.price*EUR.result.amount).toString()
+            }
     }
     formatDataForFile(data){
             let reporte = '<H1>Informe de cotizacion:</H1><br><ul>';

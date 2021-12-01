@@ -11,12 +11,12 @@ export function createPdfGenerator() {
             return new Promise((resolve, reject) => {
                 pdf.create(prepararPedido().generarPlanillaPedido(pedido))
                     .toFile(
-                        `./${pedido.nombre}.pdf`,
+                        `${PATH_FOR_REPORTS}/Pedido${new Date().toString().slice(0,9)}.pdf`,
                         function(err) {
                             if (err) {
                                 reject(err)
                             } else {
-                                resolve(`./${pedido.nombre}.pdf`);
+                                resolve(`${PATH_FOR_REPORTS}/Pedido${new Date().toString().slice(0,9)}.pdf`);
                             }
                         }
                     );
