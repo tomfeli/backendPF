@@ -37,7 +37,7 @@ export default class User{
     }
     setPassword(password){
         if(password.length < 6){
-            throw new Error("Password no valido");
+            throw new Error("INVALID_ARG: Password is not valid");
         }
         this.password = password;
     }
